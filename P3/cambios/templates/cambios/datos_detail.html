@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Curso</title>
+</head>
+<body>
+{% block content %}
+    <div class="row panel">
+    <div class="col-sm-5 col-sm-offset-4" style="border: 1px solid black">
+<h1> Detalles del curso '{{ datos.nombre }}'</h1>
+<p> Nombre del curso: <b>{{ datos.nombre }}</b></p>
+<p> Descripcion: <b>{{ datos.descripcion }}</b></p>
+<p> Fecha de inicio: <b>{{ datos.inicio }}</b> </p>
+<p> Fecha de termino: <b>{{ datos.fin }}</b> </p>
+<p> Imagen : <img src="{{ datos.image.url }}" height="400" width="400" class="img-responsive"></p>
+<a href="{% url 'urls:lista' %}"> Regresar</a>
+    </div>
+    </div>
+{% endblock %}
+</body>
+</html>

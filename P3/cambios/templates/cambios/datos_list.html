@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Lista de cursos {% endblock %}</title>
+</head>
+<body>
+
+{% block content %}
+{% if object_list %}
+ <div class="container">
+    <h2> Cursos Disponibles</h2>
+<table class="table table-responsive table-striped table-bordered">
+    <thead>
+    <tr>
+        <th> Nombre del curso</th>
+        <th> Detalles</th>
+        <th> Actualizar</th>
+        <th> Borrar</th>
+    </tr>
+    </thead>
+    <tbody>
+  {% for curso in object_list %}
+    <tr>
+        <th> {{ curso.nombre }}</th>
+        <th> <a href="{% url 'urls:detalle' curso.id %}"> Detalles del curso</a></th>
+        <th> <a href="{% url 'urls:modificar' curso.id %}"> Modificar</a></th>
+        <th> <a href="{% url 'urls:borrar' curso.id %}"> Borrar</a></th>
+    </tr>
+   {% endfor %}
+   </tbody>
+</table>
+ </div>
+   {% else %}
+    <h3> No hay cursos que mostrar </h3>
+{% endif %}
+<p><a href="{% url 'urls:agregar' %}"> Agregar un nuevo curso</a></p>
+</body>
+{% endblock %}
+</html>
